@@ -15,4 +15,6 @@ int main() {
    }
 
    cout << "Binary of " << n << "is : " << ans;
+
+   return 0;
 }
