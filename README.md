@@ -45,9 +45,11 @@ Currently learning:
 
 More topics and problems will be added regularly as I continue learning.
 
+Wanna learn together and build connection ?
+
 Mail me to build strong DSA fundamentals together !
 e-mail address : nivpanchal2122@gmail.com
 
-                  or
+------------------OR--------------------
 
 DM me on Instagram on https://www.instagram.com/niv_panchal01
