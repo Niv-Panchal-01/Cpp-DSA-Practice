@@ -8,10 +8,9 @@ This repository contains my C++ learning journey and Data Structures & Algorithm
 * Loops and Conditions
 * Functions
 * Pattern Problems
-* Fibonacci Series
-* Prime Number Problems
-* Number System Conversion
 * Mathematical Logic Problems
+* Basic Exercises
+* Leetcode
 
 ## Folder Structure
 
@@ -24,7 +23,9 @@ cpp-dsa-practice/
 ├── arrays/
 ├── strings/
 ├── recursion/
-└── sorting/
+├── sorting/
+└── vectors/
+
 ```
 
 ## Goals
@@ -38,9 +39,15 @@ cpp-dsa-practice/
 
 Currently learning:
 
-* Nested loops
-* Pattern printing
-* Fibonacci logic
 * Mathematical problem solving in C++
+* arrays and vectors
+* solving basic exercises
 
 More topics and problems will be added regularly as I continue learning.
+
+Mail me to build strong DSA fundamentals together !
+e-mail address : nivpanchal2122@gmail.com
+
+                  or
+
+DM me on Instagram on https://www.instagram.com/niv_panchal01
