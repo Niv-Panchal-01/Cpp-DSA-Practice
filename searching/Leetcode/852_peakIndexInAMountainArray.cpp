@@ -10,11 +10,6 @@ int peakIndexInMountainArray(vector<int> &arr) {
    while (start <= end) {
       int mid = start + (end - start) / 2;
 
-      // if (arr[mid - 1] <= arr[mid] && arr[mid] > arr[mid + 1]) {
-      //    answer = mid;
-      //    break;
-      // }
-
       if (arr[mid] > arr[mid + 1]) {
          end = mid - 1;
       } else {
