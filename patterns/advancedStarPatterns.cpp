@@ -59,10 +59,28 @@ void butterflyPattern(int n) {
    }
 }
 
+void squarePattern(int n) {
+   for (int i = 0; i < n; i++) {
+      for (int k = 0; k < n; k++) {
+         if (i == 0 || i == n - 1) {
+            cout << '*' << ' ';
+            continue;
+         }
+         if (k == 0 || k == n - 1) {
+            cout << '*' << ' ';
+         } else {
+            cout << ' ' << ' ';
+         }
+      }
+      cout << endl;
+   }
+}
+
 int main() {
    int n;
    cout << "Enter number of rows : ";
    cin >> n;
 
+   squarePattern(n);
    return 0;
 }
