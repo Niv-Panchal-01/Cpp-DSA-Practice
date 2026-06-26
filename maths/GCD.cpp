@@ -12,12 +12,15 @@ int GCD(int n, int k) {
    //    }
    // }
 
-   while (n > 0 && k > 0) {
-      if (n == k) {
+   // Equilateral Algorithm
+   while (n > 0 || k > 0) {
+      if (n == 0) {
          largestNumber = k;
          break;
+      } else if (k == 0) {
+         largestNumber = n;
       } else if (n > k) {
-         n -= k;
+         n %= k;
       } else {
          k -= n;
       }
