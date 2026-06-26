@@ -13,17 +13,18 @@ int GCD(int n, int k) {
    // }
 
    // Equilateral Algorithm
-   while (n > 0 || k > 0) {
-      if (n == 0) {
-         largestNumber = k;
-         break;
-      } else if (k == 0) {
-         largestNumber = n;
-      } else if (n > k) {
+   while (n > 0 && k > 0) {
+      if (n > k) {
          n %= k;
       } else {
-         k -= n;
+         k %= n;
       }
+   }
+
+   if (n == 0) {
+      return k;
+   } else {
+      return n;
    }
 
    return largestNumber;
