@@ -8,12 +8,12 @@ void printArray(vector<int> arr) {
    }
    cout << endl;
 }
-// 5 4 3 2 1
+// example array --> 5 4 3 2 1
 void bubbleSort(vector<int> &arr) {
    int size = arr.size();
 
    for (int k = 0; k < size - 1; k++) {
-      for (int n = 0; n < size - 1; n++) {
+      for (int n = 0; n < size - k - 1; n++) {
          if (arr[n] > arr[n + 1]) {
             swap(arr[n], arr[n + 1]);
          }
