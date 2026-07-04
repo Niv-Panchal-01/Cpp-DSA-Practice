@@ -11,8 +11,8 @@ void printArray(vector<int> arr) {
 // example array --> 5 4 3 2 1
 void bubbleSort(vector<int> &arr) {
    int size = arr.size();
-   bool isSorted = true;
    for (int k = 0; k < size - 1; k++) {
+      bool isSorted = true;
       for (int n = 0; n < size - k - 1; n++) {
          if (arr[n] > arr[n + 1]) {
             swap(arr[n], arr[n + 1]);
