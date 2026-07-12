@@ -1,33 +1,38 @@
 #include <iostream>
-#include <unordered_set>
 #include <vector>
 using namespace std;
 
-vector<int> removeDupliactes(vector<int> &arr) {
+// This solution is specifically for sorted array
+// This solution may print duplicates elements after unique elements
+int removeDupliactes(vector<int> &arr) {
    int n = arr.size();
-   unordered_set<int> newSet;
-   for (int i = 0; i < n; i++) {
-      newSet.insert(arr[i]);
+   int i = 0, j = 1;
+
+   if (n <= 0) {
+      return i;
    }
 
-   int index = 0;
-   for (int val : newSet) {
-      arr[index] = val;
-      index++;
+   while (j < n) {
+      if (arr[i] != arr[j]) {
+         i++;
+         arr[i] = arr[j];
+      }
+      j++;
    }
-   return arr;
+
+   return i + 1;
 }
 
-void printSet(const vector<int> &myArray) {
-   for (int val : myArray) {
-      cout << val << ' ';
+void printArray(const vector<int> &myArray, int k) {
+   for (int i = 0; i < k; i++) {
+      cout << myArray[i] << ' ';
    }
    cout << endl;
 }
 
 int main() {
    vector<int> arr = {1, 1, 1, 2, 2, 3, 3, 3, 3, 4, 4};
-
-   printSet(removeDupliactes(arr));
+   int k = removeDupliactes(arr);
+   printArray(arr, k);
    return 0;
 }
