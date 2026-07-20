@@ -4,19 +4,16 @@ using namespace std;
 
 void leftRotationOfArray(vector<int> &arr, int k) {
    int n = arr.size();
-   if (k <= 0 || n <= 0) {
-      return;
+   k = k % n;
+   vector<int> temp(arr.begin(), arr.begin() + k);
+
+   for (int i = k; i < n; i++) {
+      arr[i - k] = arr[i];
    }
 
-   int temp = arr[0];
-
-   for (int i = 0; i < n - 1; i++) {
-      arr[i] = arr[i + 1];
+   for (int i = n - k; i < n; i++) {
+      arr[i] = temp[i - (n - k)];
    }
-
-   arr[n - 1] = temp;
-
-   leftRotationOfArray(arr, k - 1);
 }
 
 void printArray(const vector<int> &arr) {
@@ -30,7 +27,7 @@ int main() {
    vector<int> myArray = {1, 2, 3, 4, 5, 6, 7};
 
    cout << "Your new array is : ";
-   leftRotationOfArray(myArray, 2);
+   leftRotationOfArray(myArray, 6);
    printArray(myArray);
    return 0;
 }
