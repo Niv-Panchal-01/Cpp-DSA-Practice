@@ -9,16 +9,12 @@ vector<int> unionOfTwoArrays(const vector<int> &arr1, const vector<int> &arr2) {
 
    while (i < sizeOfArr1 && j < sizeOfArr2) {
       if (arr1[i] <= arr2[j]) {
-         if (unionArray.empty()) {
-            unionArray.push_back(arr1[i]);
-         } else if (arr1[i] != unionArray.back()) {
+         if (unionArray.empty() || arr1[i] != unionArray.back()) {
             unionArray.push_back(arr1[i]);
          }
          i++;
       } else {
-         if (unionArray.empty()) {
-            unionArray.push_back(arr2[j]);
-         } else if (arr2[j] != unionArray.back()) {
+         if (unionArray.empty() || arr2[j] != unionArray.back()) {
             unionArray.push_back(arr2[j]);
          }
          j++;
@@ -26,17 +22,13 @@ vector<int> unionOfTwoArrays(const vector<int> &arr1, const vector<int> &arr2) {
    }
 
    while (i < sizeOfArr1) {
-      if (unionArray.empty()) {
-         unionArray.push_back(arr1[i]);
-      } else if (arr1[i] != unionArray.back()) {
+      if (unionArray.empty() || arr1[i] != unionArray.back()) {
          unionArray.push_back(arr1[i]);
       }
       i++;
    }
    while (j < sizeOfArr2) {
-      if (unionArray.empty()) {
-         unionArray.push_back(arr2[j]);
-      } else if (arr2[j] != unionArray.back()) {
+      if (unionArray.empty() || arr2[j] != unionArray.back()) {
          unionArray.push_back(arr2[j]);
       }
       j++;
@@ -45,7 +37,7 @@ vector<int> unionOfTwoArrays(const vector<int> &arr1, const vector<int> &arr2) {
    return unionArray;
 }
 
-void printSet(const vector<int> &s) {
+void printArray(const vector<int> &s) {
    for (int val : s) {
       cout << val << ' ';
    }
@@ -58,6 +50,6 @@ int main() {
    vector<int> arr1 = {};
    vector<int> arr2 = {1, 1, 1};
 
-   printSet(unionOfTwoArrays(arr1, arr2));
+   printArray(unionOfTwoArrays(arr1, arr2));
    return 0;
 }
