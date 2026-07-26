@@ -1,22 +1,51 @@
 #include <iostream>
-#include <set>
 #include <vector>
 using namespace std;
 
-set<int> unionOfTwoArrays(const vector<int> &arr1, const vector<int> &arr2) {
-   set<int> newSet;
+vector<int> unionOfTwoArrays(const vector<int> &arr1, const vector<int> &arr2) {
+   vector<int> unionArray;
+   int sizeOfArr1 = arr1.size(), sizeOfArr2 = arr2.size();
+   int i = 0, j = 0;
 
-   for (int val : arr1) {
-      newSet.insert(val);
-   }
-   for (int val : arr2) {
-      newSet.insert(val);
+   while (i < sizeOfArr1 && j < sizeOfArr2) {
+      if (arr1[i] <= arr2[j]) {
+         if (unionArray.empty()) {
+            unionArray.push_back(arr1[i]);
+         } else if (arr1[i] != unionArray.back()) {
+            unionArray.push_back(arr1[i]);
+         }
+         i++;
+      } else {
+         if (unionArray.empty()) {
+            unionArray.push_back(arr2[j]);
+         } else if (arr2[j] != unionArray.back()) {
+            unionArray.push_back(arr2[j]);
+         }
+         j++;
+      }
    }
 
-   return newSet;
+   while (i < sizeOfArr1) {
+      if (unionArray.empty()) {
+         unionArray.push_back(arr1[i]);
+      } else if (arr1[i] != unionArray.back()) {
+         unionArray.push_back(arr1[i]);
+      }
+      i++;
+   }
+   while (j < sizeOfArr2) {
+      if (unionArray.empty()) {
+         unionArray.push_back(arr2[j]);
+      } else if (arr2[j] != unionArray.back()) {
+         unionArray.push_back(arr2[j]);
+      }
+      j++;
+   }
+
+   return unionArray;
 }
 
-void printSet(const set<int> &s) {
+void printSet(const vector<int> &s) {
    for (int val : s) {
       cout << val << ' ';
    }
@@ -24,8 +53,10 @@ void printSet(const set<int> &s) {
 }
 
 int main() {
-   vector<int> arr1 = {1, 1, 2, 3, 4, 5};
-   vector<int> arr2 = {2, 2, 3, 4, 4, 5, 6};
+   // vector<int> arr1 = {1, 1, 2, 3, 4, 5};
+   // vector<int> arr2 = {2, 2, 3, 4, 4, 5, 6};
+   vector<int> arr1 = {};
+   vector<int> arr2 = {1, 1, 1};
 
    printSet(unionOfTwoArrays(arr1, arr2));
    return 0;
