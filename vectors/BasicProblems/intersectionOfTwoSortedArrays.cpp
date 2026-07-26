@@ -4,19 +4,18 @@ using namespace std;
 
 vector<int> intersectionOfArrays(const vector<int> &a1, const vector<int> &a2) {
    vector<int> ans;
-   vector<int> temp = {0};
+   int i = 0, j = 0;
+   int n1 = a1.size(), n2 = a2.size();
 
-   for (int i = 0; i < a1.size(); i++) {
-      for (int k = 0; k < a2.size(); k++) {
-         if (a1[i] == a2[k] && temp[k] == 0) {
-            ans.push_back(a1[i]);
-            temp[k] = 1;
-            break;
-         }
-
-         if (a1[i] < a2[k]) {
-            break;
-         }
+   while (i < n1 && j < n2) {
+      if (a1[i] < a2[j]) {
+         i++;
+      } else if (a1[i] > a2[j]) {
+         j++;
+      } else {
+         ans.push_back(a1[i]);
+         i++;
+         j++;
       }
    }
 
@@ -33,8 +32,8 @@ void printArray(const vector<int> &s) {
 int main() {
    // vector<int> arr1 = {1, 1, 2, 3, 4, 5};
    // vector<int> arr2 = {2, 2, 3, 4, 4, 5, 6};
-   vector<int> arr1 = {1, 2, 2, 3};
-   vector<int> arr2 = {1, 1, 1};
+   vector<int> arr1 = {2, 5};
+   vector<int> arr2 = {3, 5};
 
    printArray(intersectionOfArrays(arr1, arr2));
    return 0;
