@@ -5,24 +5,18 @@ using namespace std;
 
 int getMissingNumber(const vector<int> &arr) {
    int n = arr.size() + 1;
+   int totalSum = n * (n + 1) / 2;
+   int arrSum = 0;
 
-   for (int i = 1; i <= n; i++) {
-      int flag = 0;
-      for (int k = 0; k < n - 1; k++) {
-         if (arr[k] == i) {
-            flag++;
-            break;
-         }
-      }
-
-      if (flag == 0) {
-         return i;
-      }
+   for (int j = 0; j < n - 1; j++) {
+      arrSum += arr[j];
    }
+
+   return totalSum - arrSum;
 }
 
 int main() {
-   vector<int> arr = {1, 2, 3, 5};
+   vector<int> arr = {8, 2, 4, 5, 3, 7, 1};
 
    cout << "Here is the mssing element in the array : "
         << getMissingNumber(arr);
