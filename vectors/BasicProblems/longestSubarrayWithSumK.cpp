@@ -3,6 +3,11 @@
 #include <vector>
 using namespace std;
 
+/*
+time complexity : O(n)
+space complexity : O(n)
+*/
+
 int getLongestSubarrayWithsumK(const vector<int> &arr, int k) {
    int n = arr.size();
    int maxSum = 0;
