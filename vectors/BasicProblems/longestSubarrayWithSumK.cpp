@@ -1,41 +1,42 @@
 #include <iostream>
-#include <unordered_map>
 #include <vector>
 using namespace std;
 
 /*
-time complexity : O(n)
-space complexity : O(n)
+time complexity : O(2n) = O(n)
+space complexity : O(1)
 */
 
+// This solution is only for positive integers and zeros
 int getLongestSubarrayWithsumK(const vector<int> &arr, int k) {
    int n = arr.size();
-   int maxSum = 0;
-   int sum = 0;
-   unordered_map<int, int> preSumMap;
+   int maxLen = 0;
+   int sum = arr[0];
+   int i = 0, j = 0;
 
-   for (int i = 0; i < n; i++) {
-      sum += arr[i];
+   while (j < n) {
+      while (i <= j && sum > k) {
+         sum -= arr[i];
+         i++;
+      }
 
       if (sum == k) {
-         maxSum = max(maxSum, i + 1);
+         maxLen = max(maxLen, j - i + 1);
       }
-      int rem = sum - k;
 
-      if (preSumMap.find(rem) != preSumMap.end()) {
-         int len = i - preSumMap[rem];
-         maxSum = max(maxSum, len);
-      }
-      if (preSumMap.find(sum) == preSumMap.end()) {
-         preSumMap[sum] = i;
+      j++;
+      if (j < n) {
+         sum += arr[j];
       }
    }
-   return maxSum;
+
+   return maxLen;
 }
 
 int main() {
-   vector<int> arr = {2, -1, 1, 3};
+   // vector<int> arr = {2, 0, 0, 3};
+   vector<int> arr = {1, 2, 3, 1, 1, 1, 1, 3, 3};
 
-   cout << "Your answer is : " << getLongestSubarrayWithsumK(arr, 3);
+   cout << "Your answer is : " << getLongestSubarrayWithsumK(arr, 5);
    return 0;
 }
