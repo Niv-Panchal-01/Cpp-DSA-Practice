@@ -1,16 +1,23 @@
 #include <iostream>
+#include <unordered_map>
 #include <vector>
 using namespace std;
 
+/*
+time complexity : O(n)
+space complexity : O(n)
+*/
+
 vector<int> twoSum(const vector<int> &arr, int target) {
    int n = arr.size();
+   unordered_map<int, int> sumMap;
 
    for (int i = 0; i < n; i++) {
-      for (int j = i + 1; j < n; j++) {
-         if (arr[i] + arr[j] == target) {
-            return {i, j};
-         }
+      int val = target - arr[i];
+      if (sumMap.find(val) != sumMap.end()) {
+         return {sumMap[val], i};
       }
+      sumMap[arr[i]] = i;
    }
 
    return {0};
