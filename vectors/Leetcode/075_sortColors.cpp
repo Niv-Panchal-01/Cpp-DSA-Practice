@@ -4,12 +4,18 @@ using namespace std;
 
 vector<int> sortColors(vector<int> &arr) {
    int n = arr.size();
+   int low = 0, mid = 0, high = n - 1;
 
-   for (int i = 0; i < n; i++) {
-      for (int j = i + 1; j < n; j++) {
-         if (arr[i] > arr[j]) {
-            swap(arr[i], arr[j]);
-         }
+   while (mid <= high) {
+      if (arr[mid] == 0) {
+         swap(arr[mid], arr[low]);
+         low++;
+         mid++;
+      } else if (arr[mid] == 1) {
+         mid++;
+      } else {
+         swap(arr[mid], arr[high]);
+         high--;
       }
    }
 
@@ -25,7 +31,7 @@ void printArray(const vector<int> &arr) {
 }
 
 int main() {
-   vector<int> arr = {0, 0, 1, 1, 1};
+   vector<int> arr = {0};
 
    cout << "Sorted array : ";
    printArray(sortColors(arr));
