@@ -1,5 +1,4 @@
 #include <iostream>
-#include <unordered_map>
 #include <vector>
 using namespace std;
 
@@ -10,16 +9,22 @@ space complexity : O(1)
 
 int majorityElement(const vector<int> &nums) {
    int n = nums.size();
-   unordered_map<int, int> maxMap;
+   int answer = 0;
+   int frequency = 0;
 
-   for (int val : nums) {
-      maxMap[val]++;
-      if (maxMap[val] > n / 2) {
-         return val;
+   for (int i = 0; i < n; i++) {
+      if (frequency == 0) {
+         answer = nums[i];
+      }
+
+      if (answer == nums[i]) {
+         frequency++;
+      } else {
+         frequency--;
       }
    }
 
-   return 0;
+   return answer;
 }
 
 int main() {
