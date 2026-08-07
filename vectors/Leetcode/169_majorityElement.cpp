@@ -5,13 +5,12 @@ using namespace std;
 
 /*
 time complexity : O(n)
-space complexity : O(n)
+space complexity : O(1)
 */
 
 int majorityElement(const vector<int> &nums) {
    int n = nums.size();
    unordered_map<int, int> maxMap;
-   int answer = 0;
 
    for (int val : nums) {
       maxMap[val]++;
