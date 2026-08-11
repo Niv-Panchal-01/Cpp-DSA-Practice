@@ -2,13 +2,19 @@
 #include <vector>
 using namespace std;
 
+/*
+Time complexity : O(n)
+Space complexity : O(1)
+*/
+
 int maxProfit(const vector<int> &prices) {
    int n = prices.size();
    int maxProfit = 0;
+   int minPrice = prices[0];
    for (int i = 1; i < n; i++) {
-      for (int j = 0; j < i; j++) {
-         maxProfit = max(maxProfit, prices[i] - prices[j]);
-      }
+      minPrice = min(minPrice, prices[i]);
+      int profit = prices[i] - minPrice;
+      maxProfit = max(maxProfit, profit);
    }
 
    return maxProfit;
