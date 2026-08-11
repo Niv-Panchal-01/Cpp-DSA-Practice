@@ -2,14 +2,15 @@
 #include <vector>
 using namespace std;
 
-int maxProfit(vector<int> &prices) {
-   int bestBuy = prices[0];
+int maxProfit(const vector<int> &prices) {
+   int n = prices.size();
    int maxProfit = 0;
-   for (int i = 0; i < prices.size(); i++) {
-      bestBuy = min(bestBuy, prices[i]);
-      int currentProfit = prices[i] - bestBuy;
-      maxProfit = max(maxProfit, currentProfit);
+   for (int i = 1; i < n; i++) {
+      for (int j = 0; j < i; j++) {
+         maxProfit = max(maxProfit, prices[i] - prices[j]);
+      }
    }
+
    return maxProfit;
 }
 
