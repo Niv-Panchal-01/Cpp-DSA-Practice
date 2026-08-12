@@ -3,50 +3,27 @@
 using namespace std;
 
 /*
-Time complexity : O(n ^ 2)
-Space Complexity : O(1)
+Time Complexity : O(n)
+Space Complexity : O(n)
 */
 
 vector<int> rearrangeArrayElements(vector<int> &nums) {
    int n = nums.size();
-   int j = 0;
-   int count = 0;
+   vector<int> temp(n);
+   int pos = 0;
+   int neg = 1;
 
    for (int i = 0; i < n; i++) {
-      if (j % 2 == 0) { // for positive elements
-         if (nums[j] > 0) {
-            j++;
-            count++;
-         } else if (nums[i] > 0) {
-            swap(nums[i], nums[j]);
-            j++;
-            count++;
-            while (count < i) {
-               swap(nums[count], nums[i]);
-               count++;
-            }
-            count = j;
-            i--;
-         }
-      } else { // for negative elements
-         if (nums[j] < 0) {
-            j++;
-            count++;
-         } else if (nums[i] < 0) {
-            swap(nums[i], nums[j]);
-            j++;
-            count++;
-            while (count < i) {
-               swap(nums[count], nums[i]);
-               count++;
-            }
-            count = j;
-            i--;
-         }
+      if (nums[i] > 0) {
+         temp[pos] = nums[i];
+         pos += 2;
+      } else {
+         temp[neg] = nums[i];
+         neg += 2;
       }
    }
 
-   return nums;
+   return temp;
 }
 
 void printArray(const vector<int> &nums) {
