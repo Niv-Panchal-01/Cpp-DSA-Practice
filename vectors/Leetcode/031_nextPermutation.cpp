@@ -3,6 +3,11 @@
 #include <vector>
 using namespace std;
 
+/*
+Time complexity : O(n)
+Space complexity : O(1)
+*/
+
 vector<int> nextPermutation(vector<int> &arr) {
    int n = arr.size();
    int index = -1;
