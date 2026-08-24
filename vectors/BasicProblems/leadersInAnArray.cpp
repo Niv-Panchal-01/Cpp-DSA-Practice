@@ -21,32 +21,29 @@ than 12, 3, 0, 6, making them leaders as well.
 */
 
 /*
-Time complexity : O(n ^ 2)
+Time complexity : O(n)
 Space complexity : O(n)
 */
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 vector<int> leadersInArray(const vector<int> &arr) {
    int n = arr.size();
    vector<int> answer;
+   int maxElement = arr[n - 1];
+   answer.push_back(maxElement);
 
-   for (int i = 0; i < n; i++) {
-      bool isLeader = true;
-      for (int j = i + 1; j < n; j++) {
-         if (arr[i] < arr[j]) {
-            isLeader = false;
-            break;
-         }
-      }
-
-      if (isLeader) {
-         answer.push_back(arr[i]);
+   for(int i = n - 2; i >= 0; i--){
+      if(maxElement < arr[i]){
+         maxElement = arr[i];
+         answer.push_back(maxElement);
       }
    }
 
+   reverse(answer.begin(), answer.end());
    return answer;
 }
 
@@ -58,8 +55,8 @@ void printArray(const vector<int> &arr) {
 }
 
 int main() {
-   vector<int> arr = {10, 22, 12, 3, 0, 6};
-   // vector<int> arr = {4, 7, 1, 0};
+   // vector<int> arr = {10, 22, 12, 3, 0, 6};
+   vector<int> arr = {4, 7, 1, 0};
 
    cout << "Your answer is  : ";
    printArray(leadersInArray(arr));
