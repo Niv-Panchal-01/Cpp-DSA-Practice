@@ -17,17 +17,17 @@ int longestConsecutiveSequence(const vector<int> &arr) {
       return 0;
    }
 
-   unordered_set<int> set;
+   unordered_set<int> numsSet;
 
    for(int i = 0; i < n; i++){
-      set.insert(arr[i]);
+      numsSet.insert(arr[i]);
    }
 
    //Time complexity : O(2n)
    for(int i = 0; i < n; i++){
-      if(set.find(arr[i] - 1) == set.end()){
+      if(numsSet.find(arr[i] - 1) == numsSet.end()){
          int element = arr[i];
-         while(set.find(element + 1) != set.end()){
+         while(numsSet.find(element + 1) != numsSet.end()){
             currentSequence++;
             maxSequence = max(maxSequence, currentSequence);
             element++;
