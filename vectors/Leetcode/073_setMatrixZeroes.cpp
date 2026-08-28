@@ -4,33 +4,51 @@ using namespace std;
 
 /*
 Time Complexity : O(n ^ 2)
-Space Complexity : O(n)
+Space Complexity : O(1)
 */
 
 void setZeroes(vector<vector<int>> &matrix) {
-   int rowSize = matrix.size();
-   vector<int> pointers;
+   int m = matrix.size();
+   int n = matrix[0].size();
+   bool isFirstColumnHas0 = false;
+   bool isFirstRowHas0 = false;
 
-   for (int i = 0; i < rowSize; i++) {
-      int columnSize = matrix[i].size();
-      bool has0 = false;
-      for (int j = 0; j < columnSize; j++) {
-         if (matrix[i][j] == 0) {
-            has0 = true;
-            pointers.push_back(j);
-         }
+   int column0 = 1;
+
+   for (int i = 0; i < m; i++) {
+      if (matrix[i][0] == 0) {
+         isFirstColumnHas0 = true;
       }
-
-      if (has0) {
-         for (int k = 0; k < columnSize; k++) {
-            matrix[i][k] = 0;
+      for (int j = 0; j < n; j++) {
+         if (matrix[0][j] == 0 && i == 0) {
+            isFirstRowHas0 = true;
+         }
+         if (matrix[i][j] == 0) {
+            if (j != 0 && i != 0) {
+               matrix[i][0] = 0;
+               matrix[0][j] = 0;
+            }
          }
       }
    }
 
-   for (int i = 0; i < rowSize; i++) {
-      for (int val : pointers) {
-         matrix[i][val] = 0;
+   for (int i = m - 1; i >= 1; i--) {
+      for (int j = n - 1; j >= 1; j--) {
+         if (matrix[0][j] == 0 || matrix[i][0] == 0) {
+            matrix[i][j] = 0;
+         }
+      }
+   }
+
+   if (isFirstColumnHas0) {
+      for (int i = 0; i < m; i++) {
+         matrix[i][0] = 0;
+      }
+   }
+
+   if (isFirstRowHas0) {
+      for (int j = 0; j < n; j++) {
+         matrix[0][j] = 0;
       }
    }
 }
