@@ -13,8 +13,6 @@ void setZeroes(vector<vector<int>> &matrix) {
    bool isFirstColumnHas0 = false;
    bool isFirstRowHas0 = false;
 
-   int column0 = 1;
-
    for (int i = 0; i < m; i++) {
       if (matrix[i][0] == 0) {
          isFirstColumnHas0 = true;
