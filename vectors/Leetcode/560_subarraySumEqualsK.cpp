@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unordered_map>
 #include <vector>
 using namespace std;
 
@@ -10,28 +11,27 @@ Space Complexity : O(1)
 int subarraySum(vector<int> &nums, int k) {
    int n = nums.size();
    int answer = 0;
+   unordered_map<int, int> answerMap;
+   int prefixSum = 0;
+   answerMap[prefixSum] = 1;
 
-   for(int i = 0; i < n; i++){
-      int sum = 0;
-
-      for(int j = i; j < n; j++){
-         sum += nums[j];
-
-         if(sum == k){
-            answer++;
-         }
-      }
+   for (int i = 0; i <= n; i++) {
+      prefixSum += nums[i];
+      int remove = prefixSum - k;
+      answer += answerMap[remove];
+      answerMap[prefixSum]++;
+      
    }
 
    return answer;
 }
 
+int main() {
+   vector<int> nums = {0, 0, 0};
+   int k = 0;
 
-int main(){
-   vector<int> nums = {1,2,3};
-   int k = 3;
-
-   cout << "the total number of subarrays whose sum equals to k is : " << subarraySum(nums, k);
+   cout << "the total number of subarrays whose sum equals to k is : "
+        << subarraySum(nums, k);
 
    return 0;
 }
